@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :products
+  resource :session
+  resources :passwords, param: :token
+  resources :products do
+    resources :subscribers, only: [ :create ]
+  end
 
   get "/products", to: "products#index"
 
@@ -14,5 +18,6 @@ put "/products/:id", to: "products#update"
 
 delete "/products/:id", to: "products#destroy"
 root "products#index"
+resource :unsubscribe, only: [ :show ]
 
 end

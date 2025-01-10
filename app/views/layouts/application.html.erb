@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="https://unpkg.com/simpledotcss/simple.min.css">
+
     <title><%= content_for(:title) || "Final" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -21,14 +23,10 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
-  <div class="notice"><%= notice %></div>
-
   <nav>
-  <%= link_to "Home", root_path %>
   <%= button_to "Log out", session_path, method: :delete if authenticated? %>
-</nav>
+  </nav>
 
 <main>
   <%= yield %>
